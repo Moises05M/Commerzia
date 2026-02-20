@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="Commerzia_API.csproj" />
+  <Project Path="Commerzia_API/Commerzia_API.csproj" />
+  <Project Path="Commerzia_WinUI/Commerzia_WinUI.csproj" Id="d3531485-48c0-4a62-9479-c1149638ac1b">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
 </Solution>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Commerzia_WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Commerzia_WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
