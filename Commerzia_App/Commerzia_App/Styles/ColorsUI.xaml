@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#F4F7FE" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#2B3674" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A3AED0" />
+    <SolidColorBrush x:Key="PrimaryBrandBrush" Color="#3B71FF" />
+    <SolidColorBrush x:Key="DividerBrush" Color="#E2E8F0" />
+
+    <SolidColorBrush x:Key="ButtonPrimaryBackgroundRest" Color="#3B71FF" />
+    <SolidColorBrush x:Key="ButtonPrimaryBackgroundHover" Color="#2A60EE" />
+    <SolidColorBrush x:Key="ButtonPrimaryBackgroundPressed" Color="#1E52D8" />
+    <SolidColorBrush x:Key="ButtonPrimaryBackgroundDisabled" Color="#E2E8F0" />
+    <SolidColorBrush x:Key="ButtonPrimaryForegroundDisabled" Color="#A3AED0" />
+
+    <SolidColorBrush x:Key="ButtonSubtleBackgroundHover" Color="#EAEFFF" />
+    <SolidColorBrush x:Key="ButtonSubtleBackgroundPressed" Color="#EBF1FF" />
+
+    <SolidColorBrush x:Key="InputBackgroundRest" Color="#F4F7FE" />
+    <SolidColorBrush x:Key="InputBackgroundHover" Color="#EBEFFF" />
+    <SolidColorBrush x:Key="InputBorderFocused" Color="#3B71FF" />
+
+    <SolidColorBrush x:Key="SuccessBrush" Color="#05CD99" />
+    <SolidColorBrush x:Key="SuccessBackgroundBrush" Color="#E6FAF5" />
+
+    <SolidColorBrush x:Key="WarningBrush" Color="#FFCE20" />
+    <SolidColorBrush x:Key="WarningBackgroundBrush" Color="#FFFCE8" />
+
+    <SolidColorBrush x:Key="DangerBrush" Color="#E31A1A" />
+    <SolidColorBrush x:Key="DangerBackgroundBrush" Color="#FDEBE9" />
+
+</ResourceDictionary>
