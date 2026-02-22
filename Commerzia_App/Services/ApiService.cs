@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commerzia_App.Models;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -37,6 +38,23 @@ namespace Commerzia_App.Services
         public void SetAuthToken(string token)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+
+        // Login
+        public async Task<string?> LoginAsync(string user, string password)
+        {
+            var request = new LoginRequest { Username = user, Password = password };
+
+            // Asegúrate de que el endpoint coincida con el controlador de tu API (ej: /api/auth/login)
+            var response = await PostAsync<LoginRequest, LoginResponse>("Account/login", request);
+
+            if (response != null && !string.IsNullOrEmpty(response.Token))
+            {
+                // Guardamos el token en la instancia Singleton para futuras peticiones
+                SetAuthToken(response.Token);
+                return response.Token;
+            }
+            return null;
         }
 
         // LEER (GET)

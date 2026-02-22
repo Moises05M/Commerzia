@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="Commerzia_API/Commerzia_API.csproj" />
-  <Project Path="Commerzia_App/Commerzia_App/Commerzia_App.csproj" Id="f97443bf-18a7-4cf3-b67e-8c99d34aa3be" />
+  <Project Path="Commerzia_App/Commerzia_App.csproj" />
 </Solution>
