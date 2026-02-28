@@ -1,0 +1,308 @@
+﻿<UserControl x:Class="Commerzia_App.Views.SystemView.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1100"
+             Background="{StaticResource AppBackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,32" VerticalAlignment="Center">
+                <TextBlock Text="Dashboard Overview" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="{StaticResource TextPrimaryBrush}" 
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Welcome back, here's what's happening today." 
+                           FontSize="14" 
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource FormCardStyle}" Margin="0,0,16,24">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,16">
+                            <Border Width="40" Height="40" CornerRadius="8" Background="#EAEFFF" HorizontalAlignment="Left">
+                                <TextBlock Text="$" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryBrandBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="{StaticResource SuccessBackgroundBrush}" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <TextBlock Text="↗ 12%" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+                        </Grid>
+                        <TextBlock Text="$128,430" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                        <TextBlock Text="Total Revenue" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource FormCardStyle}" Margin="0,0,16,24">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,16">
+                            <Border Width="40" Height="40" CornerRadius="8" Background="#FDEBE9" HorizontalAlignment="Left">
+                                <TextBlock Text="🛍" FontSize="18" Foreground="{StaticResource DangerBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="{StaticResource SuccessBackgroundBrush}" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <TextBlock Text="↗ 8%" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+                        </Grid>
+                        <TextBlock Text="2,543" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                        <TextBlock Text="Total Sales" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Style="{StaticResource FormCardStyle}" Margin="0,0,16,24">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,16">
+                            <Border Width="40" Height="40" CornerRadius="8" Background="#E6FAF5" HorizontalAlignment="Left">
+                                <TextBlock Text="👥" FontSize="18" Foreground="{StaticResource SuccessBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="{StaticResource SuccessBackgroundBrush}" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <TextBlock Text="↗ 24%" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+                        </Grid>
+                        <TextBlock Text="14.2k" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                        <TextBlock Text="Active Clients" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Style="{StaticResource FormCardStyle}">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,16">
+                            <Border Width="40" Height="40" CornerRadius="8" Background="#FFFCE8" HorizontalAlignment="Left">
+                                <TextBlock Text="📦" FontSize="18" Foreground="{StaticResource WarningBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="{StaticResource DangerBackgroundBrush}" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <TextBlock Text="↘ 2%" Foreground="{StaticResource DangerBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+                        </Grid>
+                        <TextBlock Text="1,402" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                        <TextBlock Text="Low Stock Items" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource FormCardStyle}" Margin="0,0,24,24">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,0,0,16">
+                            <TextBlock Text="Revenue &amp; Expenses" Style="{StaticResource CardTitleStyle}" Margin="0"/>
+                            <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="{StaticResource TextSecondaryBrush}" Content="•••" FontWeight="Bold" FontSize="18" Cursor="Hand"/>
+                        </Grid>
+
+                        <UniformGrid Rows="1" VerticalAlignment="Bottom" Margin="0,0,0,10">
+                            <TextBlock Text="Jan" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Feb" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Mar" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Apr" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="May" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Jun" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Jul" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Aug" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Sep" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Oct" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Nov" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="Dec" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" TextAlignment="Center"/>
+                        </UniformGrid>
+                        
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource FormCardStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Top Categories" Style="{StaticResource CardTitleStyle}" Margin="0,0,0,24"/>
+
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                            <Grid Margin="0,0,0,24">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Electronics" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                                <TextBlock Text="45%" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Right" Margin="0,0,0,8"/>
+                                <Border Grid.Row="1" Height="8" CornerRadius="4" Background="{StaticResource AppBackgroundBrush}">
+                                    <Border HorizontalAlignment="Left" Width="180" Background="{StaticResource PrimaryBrandBrush}" CornerRadius="4"/>
+                                </Border>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,24">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Furniture" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                                <TextBlock Text="30%" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Right" Margin="0,0,0,8"/>
+                                <Border Grid.Row="1" Height="8" CornerRadius="4" Background="{StaticResource AppBackgroundBrush}">
+                                    <Border HorizontalAlignment="Left" Width="120" Background="{StaticResource SuccessBrush}" CornerRadius="4"/>
+                                </Border>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Services" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                                <TextBlock Text="25%" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" HorizontalAlignment="Right" Margin="0,0,0,8"/>
+                                <Border Grid.Row="1" Height="8" CornerRadius="4" Background="{StaticResource AppBackgroundBrush}">
+                                    <Border HorizontalAlignment="Left" Width="100" Background="{StaticResource WarningBrush}" CornerRadius="4"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="3" Style="{StaticResource FormCardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="0,0,0,24">
+                        <TextBlock Text="Recent Transactions" Style="{StaticResource CardTitleStyle}" Margin="0"/>
+                        <Button Content="View All" HorizontalAlignment="Right" 
+                                Foreground="{StaticResource TextPrimaryBrush}" 
+                                BorderBrush="{StaticResource DividerBrush}" 
+                                BorderThickness="1" 
+                                Background="Transparent" 
+                                Padding="16,8" 
+                                Cursor="Hand">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="CLIENT" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Grid.Column="1" Text="DATE" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Grid.Column="2" Text="AMOUNT" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Grid.Column="3" Text="STATUS" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Grid.Column="4" Text="INVOICE ID" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold" FontSize="12"/>
+                    </Grid>
+
+                    <Rectangle Grid.Row="1" VerticalAlignment="Bottom" Height="1" Fill="{StaticResource DividerBrush}" Margin="-24,0,-24,0" />
+
+                    <StackPanel Grid.Row="2">
+
+                        <Grid Margin="0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse Width="32" Height="32" Fill="#D1D9E6" Margin="0,0,12,0"/>
+                                <TextBlock Text="Marcus Johnson" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1" Text="Oct 24, 2023" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="$1,200.00" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+
+                            <Border Grid.Column="3" Background="{StaticResource SuccessBackgroundBrush}" CornerRadius="12" Padding="12,4" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="Completed" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+
+                            <TextBlock Grid.Column="4" Text="#INV-00124" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Rectangle Height="1" Fill="{StaticResource DividerBrush}" />
+
+                        <Grid Margin="0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse Width="32" Height="32" Fill="#EAEFFF" Margin="0,0,12,0"/>
+                                <TextBlock Text="Li Wei" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1" Text="Oct 23, 2023" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="$850.50" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+
+                            <Border Grid.Column="3" Background="{StaticResource WarningBackgroundBrush}" CornerRadius="12" Padding="12,4" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="Pending" Foreground="{StaticResource WarningBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+
+                            <TextBlock Grid.Column="4" Text="#INV-00123" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Rectangle Height="1" Fill="{StaticResource DividerBrush}" />
+
+                        <Grid Margin="0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse Width="32" Height="32" Fill="#D1D9E6" Margin="0,0,12,0"/>
+                                <TextBlock Text="Robert Fox" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1" Text="Oct 23, 2023" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="$2,340.00" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+
+                            <Border Grid.Column="3" Background="{StaticResource SuccessBackgroundBrush}" CornerRadius="12" Padding="12,4" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="Completed" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold" FontSize="12"/>
+                            </Border>
+
+                            <TextBlock Grid.Column="4" Text="#INV-00122" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

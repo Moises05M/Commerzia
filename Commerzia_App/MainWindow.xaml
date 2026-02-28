@@ -16,6 +16,9 @@
     </Window.DataContext>
 
     <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:SalesOverviewViewModel}">
             <views:SalesOverviewView/>
         </DataTemplate>
@@ -53,7 +56,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="0,0,1,0">
+        <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" Panel.ZIndex="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.05" Direction="0" Color="#2B3674" />
+            </Border.Effect>
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -119,7 +126,7 @@
             </Grid>
         </Border>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Background="{StaticResource AppBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -133,20 +140,38 @@
 
                 <TextBlock Text="24 Febrero 2026" FontSize="16" FontWeight="Medium" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center"/>
 
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Style="{StaticResource IconButtonTransparent}" Margin="0,0,20,0" ToolTip="Notificaciones">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+
+                    <Border Style="{StaticResource SearchBarBorderStyle}" Background="{StaticResource SurfaceBrush}" Width="280" Margin="0,0,24,0" Height="48" CornerRadius="12">
                         <Grid>
-                            <fa:IconImage Icon="Bell" Foreground="{StaticResource TextSecondaryBrush}" Width="20" Height="20"/>
-                            <Border Width="10" Height="10" Background="{StaticResource DangerBrush}" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-2,-2,0" BorderBrush="{StaticResource AppBackgroundBrush}" BorderThickness="1"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <fa:IconImage Icon="MagnifyingGlass" Foreground="{StaticResource TextSecondaryBrush}" Width="16" Height="16" Margin="16,0,8,0" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Style="{StaticResource TransparentTextBoxStyle}" Tag="Search anything..." />
+                        </Grid>
+                    </Border>
+
+                    <Button Style="{StaticResource NotificationButtonStyle}" Width="48" Height="48" Margin="0,0,16,0" ToolTip="Notificaciones">
+                        <Grid>
+                            <fa:IconImage Icon="Bell" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                            <Border Width="10" Height="10" Background="{StaticResource PrimaryBrandBrush}" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,12,0" BorderBrush="{StaticResource SurfaceBrush}" BorderThickness="2"/>
                         </Grid>
                     </Button>
 
-                    <StackPanel Orientation="Horizontal" Cursor="Hand">
-                        <TextBlock Text="Admin User" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,12,0"/>
-                        <Border Width="36" Height="36" CornerRadius="18" Background="{StaticResource ButtonSubtleBackgroundHover}">
-                            <fa:IconImage Icon="UserTie" Foreground="{StaticResource PrimaryBrandBrush}" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </StackPanel>
+                    <Button Style="{StaticResource ProfileButtonStyle}" Height="48">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Border Width="36" Height="36" CornerRadius="18" Background="#A3AED0" Margin="0,0,12,0">
+                                <fa:IconImage Icon="User" Foreground="{StaticResource SurfaceBrush}" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Sarah C." FontWeight="SemiBold" FontSize="15" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+
+                            <fa:IconImage Icon="ChevronDown" Foreground="{StaticResource TextSecondaryBrush}" Width="12" Height="12" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
             </Grid>
 
