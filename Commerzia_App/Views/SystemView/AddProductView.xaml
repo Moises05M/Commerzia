@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1100"
              FontFamily="Montserrat">
-
+    
     <UserControl.DataContext>
         <vm:AddProductViewModel/>
     </UserControl.DataContext>
@@ -32,7 +32,7 @@
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                 <Button Content="Cancel" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,16,0" Command="{Binding CancelCommand}" />
-                <Button Content="Save Product" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SaveCommand}" />
+                <Button Content="Save Product" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SaveProductCommand}" />
             </StackPanel>
         </Grid>
 
@@ -112,7 +112,7 @@
                                 <TextBlock Text="SKU / Barcode *" Style="{StaticResource FieldLabelStyle}"/>
                                 <TextBox Style="{StaticResource CustomTextBoxStyle}" 
                                          Tag="NK-2023-001" 
-                                         Text="{Binding CodigoSKU, UpdateSourceTrigger=PropertyChanged}"/>
+                                         Text="{Binding CodigoSku, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
                             <StackPanel>
@@ -129,19 +129,10 @@
                             <TextBlock Text="Organization" Style="{StaticResource CardTitleStyle}"/>
 
                             <StackPanel Margin="0,0,0,20">
-                                <TextBlock Text="Status *" Style="{StaticResource FieldLabelStyle}"/>
-                                <ComboBox Style="{StaticResource CustomComboBoxStyle}" 
-                                          ItemsSource="{Binding Statuses}" 
-                                          SelectedValue="{Binding SelectedStatusId}" 
-                                          DisplayMemberPath="Nombre" 
-                                          SelectedValuePath="IdEstado" />
-                            </StackPanel>
-
-                            <StackPanel Margin="0,0,0,20">
                                 <TextBlock Text="Category *" Style="{StaticResource FieldLabelStyle}"/>
                                 <ComboBox Style="{StaticResource CustomComboBoxStyle}" 
-                                          ItemsSource="{Binding Categories}" 
-                                          SelectedValue="{Binding SelectedCategoryId}" 
+                                          ItemsSource="{Binding Categorias}"
+                                          SelectedItem="{Binding SelectedCategoria}"
                                           DisplayMemberPath="Nombre" 
                                           SelectedValuePath="IdCategoria" />
                             </StackPanel>
@@ -149,8 +140,8 @@
                             <StackPanel>
                                 <TextBlock Text="Brand / Vendor *" Style="{StaticResource FieldLabelStyle}"/>
                                 <ComboBox Style="{StaticResource CustomComboBoxStyle}" 
-                                          ItemsSource="{Binding Brands}" 
-                                          SelectedValue="{Binding SelectedBrandId}" 
+                                          ItemsSource="{Binding Marcas}"
+                                            SelectedItem="{Binding SelectedMarca}"
                                           DisplayMemberPath="Nombre" 
                                           SelectedValuePath="IdMarca" />
                             </StackPanel>

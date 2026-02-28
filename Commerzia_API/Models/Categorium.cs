@@ -18,6 +18,8 @@ public partial class Categorium
     public DateTime? FechaModificacion { get; set; }
 
     public string? UsuarioModificacion { get; set; }
+    public int? IdEstado { get; set; }
+    public virtual Estado? IdEstadoNavigation { get; set; }
 
     public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
 }

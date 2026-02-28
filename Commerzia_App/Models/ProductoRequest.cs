@@ -11,7 +11,7 @@ namespace Commerzia_App.Models
         public string? Descripcion { get; set; }
         public decimal PrecioVenta { get; set; }
         public int IdCategoria { get; set; }
-        public int IdMarca { get; set; }
+        public int? IdMarca { get; set; }
         public int IdEstado { get; set; }
 
         // Propiedad extra para enviar el stock inicial al backend
