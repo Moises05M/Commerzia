@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="Commerzia_App.Views.SystemView.CreatePurchaseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1100"
+             FontFamily="Montserrat"
+             Background="{StaticResource AppBackgroundBrush}">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Style="{StaticResource IconButtonTransparent}" Margin="0,0,16,0" ToolTip="Back to Purchases">
+                    <fa:IconImage Icon="ArrowLeft" Width="20" Foreground="{StaticResource TextSecondaryBrush}"/>
+                </Button>
+                <StackPanel>
+                    <TextBlock Text="Receive Inventory (Purchase)" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                    <TextBlock Text="Record supplier invoices and replenish your stock." FontSize="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="Cancel" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,16,0" />
+                <Button Content="Save Purchase" Style="{StaticResource PrimaryButtonStyle}" Padding="30,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6.5*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="3.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource FormCardStyle}" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Received Items" Style="{StaticResource CardTitleStyle}"/>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource SearchBarBorderStyle}" Margin="0,0,12,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <fa:IconImage Grid.Column="0" Icon="Barcode" Width="16" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                <TextBox Grid.Column="1" Style="{StaticResource TransparentTextBoxStyle}" Tag="Scan barcode or type product name..."/>
+                            </Grid>
+                        </Border>
+
+                        <Button Grid.Column="1" Content="Browse Catalog" Style="{StaticResource SecondaryButtonStyle}" Height="42"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="PRODUCT" Style="{StaticResource FieldLabelStyle}" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text="UNIT COST" Style="{StaticResource FieldLabelStyle}" FontSize="12" HorizontalAlignment="Right"/>
+                            <TextBlock Grid.Column="2" Text="QTY" Style="{StaticResource FieldLabelStyle}" FontSize="12" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="3" Text="TOTAL" Style="{StaticResource FieldLabelStyle}" FontSize="12" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <Separator Grid.Row="1" Background="{StaticResource DividerBrush}" Margin="0,0,0,12"/>
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl>
+                                <Grid Margin="0,8,0,16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1.2*"/>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                        <TextBlock Text="MacBook Pro 16&quot; M3" Foreground="{StaticResource TextPrimaryBrush}" FontWeight="SemiBold" FontSize="14"/>
+                                        <TextBlock Text="SKU: APP-MAC-003" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12"/>
+                                    </StackPanel>
+
+                                    <Border Grid.Column="1" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="6" Height="32" Padding="8,0" Margin="12,0" Background="{StaticResource AppBackgroundBrush}">
+                                        <Grid>
+                                            <TextBlock Text="$" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                            <TextBox Text="1850.00" Background="Transparent" BorderThickness="0" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" Width="60"/>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="-" Style="{StaticResource AnimatedQuantityButtonStyle}" Width="28"/>
+                                            <TextBlock Text="10" VerticalAlignment="Center" Width="30" TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                            <Button Content="+" Style="{StaticResource AnimatedQuantityButtonStyle}" Width="28"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="3" Text="$18,500.00" Foreground="{StaticResource TextPrimaryBrush}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                                    <Button Grid.Column="4" Style="{StaticResource AnimatedTrashButtonStyle}" HorizontalAlignment="Right">
+                                        <fa:IconImage Icon="TrashCan" Width="14" Foreground="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                                    </Button>
+                                </Grid>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Column="2">
+
+                <Border Style="{StaticResource FormCardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Supplier &amp; Invoice" Style="{StaticResource CardTitleStyle}"/>
+
+                        <TextBlock Text="Supplier *" Style="{StaticResource FieldLabelStyle}"/>
+                        <Border Style="{StaticResource SearchBarBorderStyle}" Margin="0,0,0,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <fa:IconImage Grid.Column="0" Icon="TruckFast" Width="14" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                <TextBox Grid.Column="1" Style="{StaticResource TransparentTextBoxStyle}" Tag="Search supplier..."/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock Text="Invoice Number *" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox Style="{StaticResource CustomTextBoxStyle}" Tag="e.g. INV-2023-089" Margin="0,0,0,16"/>
+
+                        <TextBlock Text="Issue Date *" Style="{StaticResource FieldLabelStyle}"/>
+                        <DatePicker Style="{StaticResource ModernDatePickerStyle}" Margin="0,0,0,8" Height="40" VerticalContentAlignment="Center"/>
+
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource FormCardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Purchase Summary" Style="{StaticResource CardTitleStyle}"/>
+
+                        <Grid Margin="0,0,0,12">
+                            <TextBlock Text="Subtotal" Foreground="{StaticResource TextSecondaryBrush}" FontSize="14"/>
+                            <TextBlock Text="$18,500.00" Foreground="{StaticResource TextPrimaryBrush}" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,12">
+                            <TextBlock Text="Tax" Foreground="{StaticResource TextSecondaryBrush}" FontSize="14"/>
+                            <TextBlock Text="$0.00" Foreground="{StaticResource TextPrimaryBrush}" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <Separator Background="{StaticResource DividerBrush}" Margin="0,12,0,16"/>
+
+                        <Grid Margin="0,0,0,24">
+                            <TextBlock Text="Total Cost" Foreground="{StaticResource TextPrimaryBrush}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock Text="$18,500.00" Foreground="{StaticResource PrimaryBrandBrush}" FontWeight="Bold" FontSize="28" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <TextBlock Text="Inventory Status" Style="{StaticResource FieldLabelStyle}"/>
+                        <ComboBox Style="{StaticResource CustomComboBoxStyle}">
+                            <ComboBoxItem IsSelected="True">Received (Updates Stock)</ComboBoxItem>
+                            <ComboBoxItem>Pending Arrival</ComboBoxItem>
+                        </ComboBox>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

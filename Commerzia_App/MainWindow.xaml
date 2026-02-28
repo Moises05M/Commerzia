@@ -4,20 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Commerzia_App" 
+        xmlns:vm="clr-namespace:Commerzia_App.ViewModels"
+        xmlns:views="clr-namespace:Commerzia_App.Views.SystemView" 
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="768" Width="1024"
+        WindowStartupLocation="CenterScreen">
 
-    <Grid Background="{StaticResource AppBackgroundBrush}">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:SalesOverviewViewModel}">
+            <views:SalesOverviewView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PurchasesViewModel}">
+            <views:PurchasesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AddProductViewModel}">
+            <views:AddProductView/>
+        </DataTemplate>
+
+        <Style x:Key="IconButtonTransparent" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrandBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" 
-            Background="{StaticResource SurfaceBrush}" 
-            BorderBrush="{StaticResource DividerBrush}" 
-            BorderThickness="0,0,1,0">
+        <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="0,0,1,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -33,42 +69,37 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="12,0,12,0" BorderThickness="0">
                     <StackPanel>
 
-                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup" IsChecked="True">
+                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup" IsChecked="True" Command="{Binding ShowDashboardCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <fa:IconImage Icon="TableCellsLarge" Width="18" Height="18" Margin="0,0,16,0"
-                                          Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                                <fa:IconImage Icon="TableCellsLarge" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                                 <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
                             </StackPanel>
                         </RadioButton>
 
-                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup">
+                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup" Command="{Binding ShowSalesCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <fa:IconImage Icon="CartShopping" Width="18" Height="18" Margin="0,0,16,0"
-                                          Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                                <fa:IconImage Icon="CartShopping" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                                 <TextBlock Text="Sales" VerticalAlignment="Center"/>
                             </StackPanel>
                         </RadioButton>
 
-                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup">
+                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup" Command="{Binding ShowPurchasesCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <fa:IconImage Icon="BagShopping" Width="18" Height="18" Margin="0,0,16,0"
-                                          Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                                <fa:IconImage Icon="BagShopping" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                                 <TextBlock Text="Purchases" VerticalAlignment="Center"/>
                             </StackPanel>
                         </RadioButton>
 
                         <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup">
                             <StackPanel Orientation="Horizontal">
-                                <fa:IconImage Icon="Users" Width="18" Height="18" Margin="0,0,16,0"
-                                          Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                                <fa:IconImage Icon="Users" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                                 <TextBlock Text="Clients" VerticalAlignment="Center"/>
                             </StackPanel>
                         </RadioButton>
 
-                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup">
+                        <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup" Command="{Binding ShowInventoryCommand}">
                             <StackPanel Orientation="Horizontal">
-                                <fa:IconImage Icon="Box" Width="18" Height="18" Margin="0,0,16,0"
-                                          Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                                <fa:IconImage Icon="Box" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                                 <TextBlock Text="Inventory" VerticalAlignment="Center"/>
                             </StackPanel>
                         </RadioButton>
@@ -79,8 +110,7 @@
                 <StackPanel Grid.Row="2" Margin="12,0,12,24">
                     <RadioButton Style="{StaticResource MenuNavigationButtonStyle}" GroupName="MenuGroup">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Gear" Width="18" Height="18" Margin="0,0,16,0"
-                                      Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
+                            <fa:IconImage Icon="Gear" Width="18" Height="18" Margin="0,0,16,0" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}"/>
                             <TextBlock Text="Settings" VerticalAlignment="Center"/>
                         </StackPanel>
                     </RadioButton>
@@ -89,17 +119,42 @@
             </Grid>
         </Border>
 
-        <Grid Grid.Column="1" Background="Transparent">
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <TextBlock Text="Contenido Principal" 
-                   FontSize="28" 
-                   FontWeight="SemiBold" 
-                   Foreground="{StaticResource TextSecondaryBrush}"
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" 
-                   Opacity="0.4"/>
+            <Grid Grid.Row="0" Margin="30,20,30,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="24 Febrero 2026" FontSize="16" FontWeight="Medium" Foreground="{StaticResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Style="{StaticResource IconButtonTransparent}" Margin="0,0,20,0" ToolTip="Notificaciones">
+                        <Grid>
+                            <fa:IconImage Icon="Bell" Foreground="{StaticResource TextSecondaryBrush}" Width="20" Height="20"/>
+                            <Border Width="10" Height="10" Background="{StaticResource DangerBrush}" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-2,-2,0" BorderBrush="{StaticResource AppBackgroundBrush}" BorderThickness="1"/>
+                        </Grid>
+                    </Button>
+
+                    <StackPanel Orientation="Horizontal" Cursor="Hand">
+                        <TextBlock Text="Admin User" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                        <Border Width="36" Height="36" CornerRadius="18" Background="{StaticResource ButtonSubtleBackgroundHover}">
+                            <fa:IconImage Icon="UserTie" Foreground="{StaticResource PrimaryBrandBrush}" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <ContentControl Grid.Row="1" 
+                            Margin="30"
+                            Background="Transparent"
+                            Content="{Binding CurrentChildView}"/>
 
         </Grid>
     </Grid>
-
 </Window>

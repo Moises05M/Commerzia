@@ -15,38 +15,96 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="8">
+                    <Grid>
+                        <Border x:Name="BaseBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8" />
+
+                        <Border x:Name="HoverBorder"
+                                Background="{StaticResource InputBackgroundHover}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Opacity="0" />
+
+                        <Border x:Name="FocusBorder"
+                                Background="{StaticResource SurfaceBrush}"
+                                BorderBrush="{StaticResource InputBorderFocused}"
+                                BorderThickness="1.5"
+                                CornerRadius="8"
+                                Opacity="0">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.15" Color="#3B71FF" />
+                            </Border.Effect>
+                        </Border>
+
                         <Grid>
                             <TextBlock x:Name="Placeholder"
-                                   Text="{TemplateBinding Tag}"
-                                   Foreground="{StaticResource TextSecondaryBrush}"
-                                   Margin="{TemplateBinding Padding}"
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   IsHitTestVisible="False"
-                                   Visibility="Collapsed" />
+                                       Text="{TemplateBinding Tag}"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       Margin="{TemplateBinding Padding}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       IsHitTestVisible="False"
+                                       Opacity="1" />
 
                             <ScrollViewer x:Name="PART_ContentHost" 
-                                      Margin="0"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          Margin="0"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
-                    </Border>
+                    </Grid>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="Text" Value="">
-                            <Setter TargetName="Placeholder" Property="Visibility" Value="Visible" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Placeholder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Placeholder" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource InputBackgroundHover}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource InputBorderFocused}" />
-                            <Setter TargetName="Border" Property="BorderThickness" Value="1.5" />
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource SurfaceBrush}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
@@ -71,23 +129,111 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
-                    <Border x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="8">
+                    <Grid>
+                        <Border x:Name="BaseBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8" />
+
+                        <Border x:Name="HoverBorder"
+                                Background="{StaticResource InputBackgroundHover}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Opacity="0" />
+
+                        <Border x:Name="FocusBorder"
+                                Background="{StaticResource SurfaceBrush}"
+                                BorderBrush="{StaticResource InputBorderFocused}"
+                                BorderThickness="1.5"
+                                CornerRadius="8"
+                                Opacity="0">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.15" Color="#3B71FF" />
+                            </Border.Effect>
+                        </Border>
+
                         <ScrollViewer x:Name="PART_ContentHost" 
-                                  Margin="0"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
+                                      Margin="0"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource InputBackgroundHover}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
+
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource InputBorderFocused}" />
-                            <Setter TargetName="Border" Property="BorderThickness" Value="1.5" />
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource SurfaceBrush}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Transparent TextBox -->
+    <Style x:Key="TransparentTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="8,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="CaretBrush" Value="{StaticResource PrimaryBrandBrush}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        <TextBlock x:Name="PlaceholderText"
+                               Text="{TemplateBinding Tag}"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               FontSize="{TemplateBinding FontSize}"
+                               Padding="{TemplateBinding Padding}"
+                               Margin="2,0,0,0"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                               Visibility="Collapsed"
+                               IsHitTestVisible="False"
+                               Opacity="0.7"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
